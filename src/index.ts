@@ -15,6 +15,11 @@ connectToMongo()
 app.get('/',async (req:Request,res:Response)=>{
     res.json({message : 'welcome to quick bites'});
 })
+app.get('/health',async (req:Request,res:Response)=>{
+    res.send({message : "Health OK!!"});
+})
+
+
 //routes
 app.use('/api/my/user' , myUserRoutes)
 

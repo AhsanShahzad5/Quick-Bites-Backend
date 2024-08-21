@@ -1,7 +1,7 @@
 import express from "express";
-import { test  , createCurrentUser , updateCurrentUser , getCurrentUser} from "../controllers/MyUserController";
 import { jwtCheck, jwtParse } from "../middleware/auth";
 import { validateMyUserRequest } from "../middleware/validation";
+import { test  , createCurrentUser , updateCurrentUser , getCurrentUser} from "../controllers/MyUserController";
 const router = express.Router();
 
 router.get('/test' , test);

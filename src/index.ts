@@ -5,6 +5,7 @@ import "dotenv/config"
 import connectToMongo from '../db';
 import myUserRoutes from './routes/MyUserRoute'
 import MyRestaurantRoute from './routes/MyRestaurantRoute'
+import RestaurantRoute from './routes/RestaurantRoute'
 
 const app = express()
 
@@ -47,6 +48,7 @@ app.get('/health', async (req: Request, res: Response) => {
 //routes
 app.use('/api/my/user', myUserRoutes)
 app.use('/api/my/restaurant', MyRestaurantRoute)
+app.use('/api/restaurant', RestaurantRoute)
 
 
 

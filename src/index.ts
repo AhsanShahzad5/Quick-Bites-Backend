@@ -13,7 +13,9 @@ const PORT = process.env.PORT || 5000;
 
 // import dotenv from 'dotenv';
 
-const allowedOrigins = ['http://localhost:5173'];
+const allowedOrigins = ['http://localhost:5173',
+'https://quick-bites-frontend-za1k.onrender.com'  
+];
 
 // Configure CORS options
 const corsOptions = {

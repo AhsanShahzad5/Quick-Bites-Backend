@@ -22,12 +22,11 @@ const corsOptions = {
     credentials: true,
 };
 
+app.use(cors(corsOptions));
+
 //for stripe encryption stuff
 app.use("/api/order/checkout/webhook" , express.raw({ type:"*/*"}));
-
-
 app.use(express.json({ limit: "50mb" }))
-app.use(cors(corsOptions));
 
 connectToMongo()
 

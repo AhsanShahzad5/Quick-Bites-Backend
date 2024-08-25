@@ -1,6 +1,6 @@
 import express from "express";
 import { jwtCheck, jwtParse } from "../middleware/auth";
-import { searchRestaurant } from "../controllers/RestaurantController";
+import { searchRestaurant ,  getRestaurant} from "../controllers/RestaurantController";
 import multer from "multer";
 import { param } from "express-validator";
 
@@ -14,6 +14,15 @@ const upload = multer({
     }
 })
 
+router.get(
+    "/:restaurantId",
+    param("restaurantId")
+      .isString()
+      .trim()
+      .notEmpty()
+      .withMessage("restaurantId paramenter must be a valid string"),
+    getRestaurant
+  );
 router.get(
     "/search/:city",
     param("city")

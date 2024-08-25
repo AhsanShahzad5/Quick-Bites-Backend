@@ -6,8 +6,10 @@ import connectToMongo from '../db';
 import myUserRoutes from './routes/MyUserRoute'
 import MyRestaurantRoute from './routes/MyRestaurantRoute'
 import RestaurantRoute from './routes/RestaurantRoute'
+import OrderRoute from './routes/OrderRoute'
 
 const app = express()
+const PORT = process.env.PORT || 5000;
 
 // import dotenv from 'dotenv';
 
@@ -20,11 +22,12 @@ const corsOptions = {
     credentials: true,
 };
 
-// Use the CORS middleware
-app.use(cors(corsOptions));
+//for stripe encryption stuff
+app.use("/api/order/checkout/webhook" , express.raw({ type:"*/*"}));
 
-const PORT = process.env.PORT || 5000;
+
 app.use(express.json({ limit: "50mb" }))
+app.use(cors(corsOptions));
 
 connectToMongo()
 
@@ -49,6 +52,7 @@ app.get('/health', async (req: Request, res: Response) => {
 app.use('/api/my/user', myUserRoutes)
 app.use('/api/my/restaurant', MyRestaurantRoute)
 app.use('/api/restaurant', RestaurantRoute)
+app.use("/api/order", OrderRoute );
 
 
 
